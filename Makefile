@@ -1,4 +1,4 @@
-GIT_PYPHI = https://raw.github.com/rupertnash/PyPhi/master
+GIT_PYPHI = https://raw.githubusercontent.com/rupertnash/PyPhi/master
 
 PY_VER = 2.7.3
 SRC = $(shell readlink -f python)
@@ -73,9 +73,9 @@ numpyclean: numpy
 numpyutils: $(NP_UTILS)
 
 $(NP_UTILS): | numpy
-	wget $(GIT_PYPHI)/numpyxc.py -O numpy/numpyxc.py
-	wget $(GIT_PYPHI)/site.cfg -O numpy/site.cfg
-	wget $(GIT_PYPHI)/setup.cfg -O numpy/setup.cfg
+	wget $(GIT_PYPHI)/numpy/numpyxc.py -O numpy/numpyxc.py
+	wget $(GIT_PYPHI)/numpy/site.cfg -O numpy/site.cfg
+	wget $(GIT_PYPHI)/numpy/setup.cfg -O numpy/setup.cfg
 
 numpyxc: numpy/setup.py | $(MIC_PY_HOME) $(NP_UTILS)
 	# build_clib forces config.h to be created; it needs to be modified before extensions are built

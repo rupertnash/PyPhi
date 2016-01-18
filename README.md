@@ -19,9 +19,15 @@ libraries. Internal testing code for Numpy and Scipy also works.
 After downloading the Makefile into a folder and running `make`
 like the following:
 
-    mkdir -p mic
-    cd mic
-    wget https://raw.github.com/bpartridge/PyPhi/master/Makefile -N && make
+	mkdir mic
+	cd mic
+	wget https://raw.githubusercontent.com/rupertnash/PyPhi/master/Makefile && make
+
+or
+
+	git clone https://github.com/rupertnash/PyPhi.git mic
+	cd mic
+	make
 
 that folder `mic` will then contain `python/_install`, which will be the
 `$PYTHONHOME` whose `bin/python` can be executed on the Phi, and whose
@@ -38,8 +44,7 @@ Tested on the Babbage cluster at NERSC as part of the
 - Recent Python installed on that system;
   tested with the Anaconda distribution.
 
-- Intel Composer XE 2013 SP1 installed with MKL and MPI support in
-  `/opt/intel/composer_xe_2013_sp1/`.
+- Intel Composer XE - the path to the MKL libraries must be added in numpy/site.cfg
 
 - A Xeon Phi coprocessor for testing (not needed for compilation itself.)
 
