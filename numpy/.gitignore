@@ -1,0 +1,15 @@
+BENTO_BUILD.txt
+COMPATIBILITY
+DEV_README.txt
+INSTALL.txt
+LICENSE.txt
+MANIFEST.in
+PKG-INFO
+README.txt
+THANKS.txt
+build/
+doc/
+numpy/
+setup.py
+setupegg.py
+site.cfg.example

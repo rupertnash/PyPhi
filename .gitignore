@@ -1,1 +1,6 @@
 *.sublime*
+*~
+*.pyc
+python
+xcompile.patch
+*.tgz

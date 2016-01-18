@@ -59,9 +59,11 @@ miccleanobjs:
 numpy.tgz:
 	wget http://downloads.sourceforge.net/project/numpy/NumPy/1.8.0/numpy-1.8.0.tar.gz -O $@
 
-numpy: numpy.tgz
+numpy:
 	mkdir $@
-	tar -xf $< -C $@ --strip-components=1
+
+numpy/setup.py: numpy.tgz | numpy
+	tar -xf $< -C numpy --strip-components=1
 
 numpyclean: numpy
 	rm -rf numpy/build
@@ -69,12 +71,12 @@ numpyclean: numpy
 
 numpyutils: $(NP_UTILS)
 
-$(NP_UTILS): numpy
+$(NP_UTILS): | numpy
 	wget $(GIT_PYPHI)/numpyxc.py -O numpy/numpyxc.py
 	wget $(GIT_PYPHI)/site.cfg -O numpy/site.cfg
 	wget $(GIT_PYPHI)/setup.cfg -O numpy/setup.cfg
 
-numpyxc: numpy | $(MIC_PY_HOME) $(NP_UTILS)
+numpyxc: numpy/setup.py | $(MIC_PY_HOME) $(NP_UTILS)
 	# build_clib forces config.h to be created; it needs to be modified before extensions are built
 	cd numpy && PYTHONXCPREFIX=$(MIC_PY_HOME) python numpyxc.py build_clib
 	sed '/INTRIN/ d' -i numpy/build/*/numpy/core/include/numpy/config.h
