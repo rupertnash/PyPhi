@@ -64,6 +64,7 @@ numpy:
 
 numpy/setup.py: numpy.tgz | numpy
 	tar -xf $< -C numpy --strip-components=1
+	touch $@
 
 numpyclean: numpy
 	rm -rf numpy/build
