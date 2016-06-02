@@ -25,9 +25,6 @@ $(SRC)/hostpython: | $(SRC)
 	cd $(SRC) && ./configure && make
 	cd $(SRC) && mv python hostpython && mv Parser/pgen Parser/hostpgen && make distclean
 
-xcompile.patch:
-	wget http://randomsplat.com/wp-content/uploads/2012/10/Python-$(PY_VER)-xcompile.patch -O $@
-
 $(SRC)/patched: xcompile.patch $(SRC)/hostpython
 	cd $(SRC) && patch -p1 < ../$<
 	touch $@

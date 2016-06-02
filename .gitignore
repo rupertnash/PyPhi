@@ -3,5 +3,4 @@
 *.pyc
 python
 scipy
-xcompile.patch
 *.tgz
